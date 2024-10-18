@@ -11,7 +11,7 @@ from pickle import dump, load
 
 class Performance_Predictor():
     def __init__(self):
-        data = pd.read_excel('INX_Future_Inc_Employee_Performance_CDS_Project2_Data_V1.8.xls')
+        data = pd.read_excel("./INX_Future_Inc_Employee_Performance_CDS_Project2_Data_V1.8.xls")
 
         # print(sorted(data["EmpJobRole"].unique()))
         # print(data.columns)

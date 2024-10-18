@@ -12,7 +12,7 @@ from pickle import dump, load
 
 class Performance_Predictor():
   def __init__(self):
-    self.data = pd.read_excel('investKL Dataset.xls')
+    self.data = pd.read_excel("./investKL Dataset.xls")
 
     # print(self.data.columns)
 
