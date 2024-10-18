@@ -45,7 +45,7 @@ class Performance_Predictor():
     # self.model_mlp.fit(X_train,y_train)
     with open("data.pkl", "rb") as f:
       self.model_mlp = load(f)
-    y_predict_mlp = self.model_mlp.predict(X_test)
+    y_predict_mlp = self.model_mlp.predict(X_test) 
     # with open("data.pkl", "wb") as f:
     #   dump(self.model_mlp, f, protocol=5)
     # print(accuracy_score(y_test,y_predict_mlp))
