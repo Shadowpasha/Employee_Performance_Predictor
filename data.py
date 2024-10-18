@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from sklearn.neural_network import MLPClassifier
 from datetime import datetime
 import numpy as np
-
+from pickle import dump, load
 
 
 class Performance_Predictor():
@@ -41,10 +41,14 @@ class Performance_Predictor():
     X_test = self.sc.transform(X_test.values)
     # print(X_test[0])
 
-    self.model_mlp = MLPClassifier(hidden_layer_sizes=(128,128,128),learning_rate_init=0.01,max_iter=1000,random_state=10)
-    self.model_mlp.fit(X_train,y_train)
+    # self.model_mlp = MLPClassifier(hidden_layer_sizes=(128,128,128),learning_rate_init=0.01,max_iter=1000,random_state=10)
+    # self.model_mlp.fit(X_train,y_train)
+    with open("data.pkl", "rb") as f:
+      self.model_mlp = load(f)
     y_predict_mlp = self.model_mlp.predict(X_test)
-    print(accuracy_score(y_test,y_predict_mlp))
+    # with open("data.pkl", "wb") as f:
+    #   dump(self.model_mlp, f, protocol=5)
+    # print(accuracy_score(y_test,y_predict_mlp))
 
   def model_predict(self, value_array):
     #  print(value_array)

@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
+from pickle import dump, load
 
 
 class Performance_Predictor():
@@ -30,10 +31,15 @@ class Performance_Predictor():
         X_test = self.sc.transform(X_test.values)
         
 
-        self.model_mlp = MLPClassifier(hidden_layer_sizes=(60,60,60),learning_rate_init=0.01,max_iter=250,random_state=42)
-        self.model_mlp.fit(X_train,y_train)
+        # self.model_mlp = MLPClassifier(hidden_layer_sizes=(60,60,60),learning_rate_init=0.01,max_iter=250,random_state=42)
+        # self.model_mlp.fit(X_train,y_train)
+        with open("demo_data.pkl", "rb") as f:
+            self.model_mlp = load(f)
         y_predict_mlp = self.model_mlp.predict(X_test)
-        print(accuracy_score(y_test,y_predict_mlp))
+
+        # with open("demo_data.pkl", "wb") as f:
+        #     dump(self.model_mlp, f, protocol=5)
+        # print(accuracy_score(y_test,y_predict_mlp))
 
         # self.rbf_svc = SVC(kernel='rbf', C=100, random_state=10).fit(X_train,y_train)
         # y_predict_svm = self.rbf_svc.predict(X_test)
