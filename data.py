@@ -8,11 +8,14 @@ from sklearn.neural_network import MLPClassifier
 from datetime import datetime
 import numpy as np
 from pickle import dump, load
+import os
 
 
 class Performance_Predictor():
   def __init__(self):
-    self.data = pd.read_excel("./investKL Dataset.xls")
+    cwd = os.getcwd()
+
+    self.data = pd.read_excel(cwd + "/InvestKL Dataset.xls")
 
     # print(self.data.columns)
 

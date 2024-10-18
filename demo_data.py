@@ -7,11 +7,13 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
 from pickle import dump, load
+import os
 
 
 class Performance_Predictor():
     def __init__(self):
-        data = pd.read_excel("./INX_Future_Inc_Employee_Performance_CDS_Project2_Data_V1.8.xls")
+        cwd = os.getcwd()
+        data = pd.read_excel(cwd + "/INX_Future_Inc_Employee_Performance_CDS_Project2_Data_V1.8.xls")
 
         # print(sorted(data["EmpJobRole"].unique()))
         # print(data.columns)
